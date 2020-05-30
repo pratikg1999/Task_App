@@ -41,6 +41,9 @@ dependencies {
     //importing card view
     implementation "androidx.cardview:cardview:1.0.0"
 
+    // https://mvnrepository.com/artifact/com.google.android.material/material
+    implementation "com.google.android.material:material:1.0.0"
+
 
 
 }

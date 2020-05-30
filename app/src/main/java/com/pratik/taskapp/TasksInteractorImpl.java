@@ -2,6 +2,7 @@ package com.pratik.taskapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,6 +19,8 @@ class TasksInteractorImpl implements TasksInteractor {
     private static final String SP_NAME = "TASK_SP";
     private static final String CUR_ID_KEY = "CUR_ID_KEY";
     private static final String TASKS_KEY = "TASKS_KEY";
+
+    public static String TAG = "Inside interactor";
 
     private List<Task> readTasksFromSP(){
         String jsonTasks = preferences.getString(TASKS_KEY, null);
@@ -49,6 +52,7 @@ class TasksInteractorImpl implements TasksInteractor {
 
     @Override
     public Task createNewTask(String title, String body) {
+        Log.d(TAG, "creating new task");
         Task newTask = new Task(curIdCounter, title, body);
         taskList.add(newTask);
         incrementCurId();
@@ -81,7 +85,6 @@ class TasksInteractorImpl implements TasksInteractor {
 //        Task task = findTaskWithId(index, taskList);
         Task task = taskList.get(index);
         return editTask(task, newTitle, newBody);
-
     }
 
     @Override
@@ -107,8 +110,8 @@ class TasksInteractorImpl implements TasksInteractor {
     }
 
     @Override
-    public Task findTaskWithId(int id, List<Task> tasks) {
-        for(Task task : tasks){
+    public Task findTaskWithId(int id) {
+        for(Task task : taskList){
             if(task.getId() == id){
                 return task;
             }

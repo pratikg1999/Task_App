@@ -5,4 +5,6 @@ interface TasksPresenter {
     void initialize();
 
     void onCardClick(int index);
+
+    void onFabClick();
 }

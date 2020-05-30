@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,14 +24,26 @@ public class MainActivity extends AppCompatActivity implements TasksView{
 
     TasksPresenter tasksPresenter;
     TasksRViewAdapter rViewAdapter;
+    FloatingActionButton fab;
     RecyclerView rView;
+    public static final String EDIT_TASK_KEY = "EDIT_TASK_KEY";
+//    private Gson gson = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Constants.global_interactor = new TasksInteractorImpl(getApplicationContext());
+        Constants.global_tasks_presenter = new TasksPresenterImpl(this, Constants.global_interactor);
         rView = findViewById(R.id.rview);
-        tasksPresenter = new TasksPresenterImpl(this, new TasksInteractorImpl(getApplicationContext()));
+        fab = findViewById(R.id.fab);
+        tasksPresenter = Constants.global_tasks_presenter;
         rView.setLayoutManager(new LinearLayoutManager(this));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tasksPresenter.onFabClick();
+            }
+        });
         tasksPresenter.initialize();
     }
 
@@ -39,6 +55,16 @@ public class MainActivity extends AppCompatActivity implements TasksView{
         }
         rViewAdapter.setTasks(tasks);
 //        rViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showEditScreen(Task task) {
+        if(task==null){
+            startActivity(new Intent(this, TaskEditActivity.class));
+        }
+        else {
+            startActivity(new Intent(this, TaskEditActivity.class).putExtra(EDIT_TASK_KEY, task.getId()));
+        }
     }
 
 

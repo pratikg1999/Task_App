@@ -18,7 +18,7 @@ interface TasksInteractor {
     void setCompletionStatus(Task task, boolean status);
     void setCompletionStatusAt(int index, boolean status); // TODO create task not found exception and add throws here
 
-    Task findTaskWithId(int id, List<Task> tasks);
+    Task findTaskWithId(int id);
 
     void setOnFinishedTransactionListener(OnTransactionFinishedListener listener);
 
