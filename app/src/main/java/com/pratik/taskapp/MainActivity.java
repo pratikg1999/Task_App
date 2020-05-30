@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -96,7 +98,13 @@ public class MainActivity extends AppCompatActivity implements TasksView{
         public void onBindViewHolder(@NonNull TasksViewHolder holder, final int position) {
             Task curTask = tasks.get(position);
             holder.tvTitle.setText(curTask.getTitle());
-
+            holder.tvBody.setText(curTask.getBody());
+            holder.cbStatus.setChecked(curTask.isDone());
+            if(curTask.isDone()) {
+                holder.llTitleHeader.setBackgroundColor(Color.parseColor("#90be6d"));
+            }else{
+                holder.llTitleHeader.setBackgroundColor(Color.parseColor("#ef233c"));
+            }
             String strTimeFormat = "hh:mm:ss a";
             DateFormat timeFormat = new SimpleDateFormat(strTimeFormat);
             String time= timeFormat.format(curTask.getDate());
@@ -125,11 +133,17 @@ public class MainActivity extends AppCompatActivity implements TasksView{
             TextView tvTitle;
             TextView tvDate;
             TextView tvTime;
+            CheckBox cbStatus;
+            TextView tvBody;
+            LinearLayout llTitleHeader;
             public TasksViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvTitle = itemView.findViewById(R.id.tv_card_title);
                 tvDate= itemView.findViewById(R.id.tv_card_date);
                 tvTime = itemView.findViewById(R.id.tv_card_time);
+                cbStatus = itemView.findViewById(R.id.cb_done_status);
+                tvBody = itemView.findViewById(R.id.tv_card_body);
+                llTitleHeader = itemView.findViewById(R.id.ll_title_header);
             }
         }
     }

@@ -42,10 +42,10 @@ class TasksInteractorImpl implements TasksInteractor {
         preferences = context.getSharedPreferences(SP_NAME, context.MODE_PRIVATE);
         curIdCounter = preferences.getInt(CUR_ID_KEY, 0);
         taskList = readTasksFromSP();
-        for(int i =0; i<3; i++){
-            taskList.add(new Task(curIdCounter, "title " +i, "body "+i ));
-            incrementCurId();
-        }
+//        for(int i =0; i<3; i++){
+//            taskList.add(new Task(curIdCounter, "title " +i, "body "+i ));
+//            incrementCurId();
+//        }
         saveTasksToSP(taskList);
     }
 
@@ -81,16 +81,17 @@ class TasksInteractorImpl implements TasksInteractor {
     }
 
     @Override
-    public Task editTaskAt(int index, String newTitle, String newBody) {
+    public Task editTaskAt(int index, String newTitle, String newBody, boolean doneStatus) {
 //        Task task = findTaskWithId(index, taskList);
         Task task = taskList.get(index);
-        return editTask(task, newTitle, newBody);
+        return editTask(task, newTitle, newBody, doneStatus);
     }
 
     @Override
-    public Task editTask(Task taskToEdit, String newTitle, String newBody) {
+    public Task editTask(Task taskToEdit, String newTitle, String newBody, boolean doneStatus) {
         taskToEdit.setTitle(newTitle);
         taskToEdit.setBody(newBody);
+        taskToEdit.setDone(doneStatus);
         saveTasksToSP(taskList);
         onTransactionFinishedListener.onFinished(taskList);
         return taskToEdit;
@@ -98,7 +99,7 @@ class TasksInteractorImpl implements TasksInteractor {
 
     @Override
     public void setCompletionStatus(Task task, boolean status) {
-        task.setCompletionStatus(status);
+        task.setDone(status);
         saveTasksToSP(taskList);
     }
 

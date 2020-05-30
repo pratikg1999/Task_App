@@ -21,36 +21,79 @@
             android:layout_marginBottom="10dp"/>
         <EditText
             android:id="@+id/et_body"
+            android:layout_weight="1"
             android:gravity="top"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:hint="Enter the body"/>
 
+        <CheckBox
+            android:id="@+id/cb_edit_done_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set completion status" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="0dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:gravity="fill_horizontal"
+        android:orientation="horizontal"
         android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            tools:ignore="NestedWeights">
+        </Space>
 
         <ImageButton
             android:id="@+id/bt_save_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#00AAAAAA"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:gravity="center_horizontal|center_vertical"
             android:src="@drawable/ic_save_black_24dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+
+        <ImageButton
+            android:id="@+id/bt_share_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:gravity="center_horizontal|center_vertical"
+            android:src="@drawable/ic_share_black_24dp"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
 
         <ImageButton
             android:id="@+id/bt_delete_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#00AAAAAA"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:gravity="center_horizontal|center_vertical"
             android:src="@drawable/ic_delete_black_24dp"/>
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
     </LinearLayout>
 
 </LinearLayout>

@@ -6,4 +6,8 @@ interface TaskEditPresenter {
     void initialize();
 
     void onDeleteButtonClick();
+
+    void onShareButtonClick();
+
+    void onBackPressed();
 }

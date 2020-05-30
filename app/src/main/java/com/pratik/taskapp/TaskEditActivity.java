@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
     EditText etBody;
     ImageButton btSave;
     ImageButton btDelete;
+    CheckBox cbDoneStatus;
+    ImageButton btShare;
     private TaskEditPresenter presenter;
 
     @Override
@@ -32,12 +35,14 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         etBody = findViewById(R.id.et_body);
         btSave = findViewById(R.id.bt_save_btn);
         btDelete = findViewById(R.id.bt_delete_btn);
-
+        btShare = findViewById(R.id.bt_share_btn);
+        cbDoneStatus = findViewById(R.id.cb_edit_done_status);
         presenter = new TaskEditPresenterImpl(this, Constants.global_interactor);
         presenter.initialize();
 
         btSave.setOnClickListener(this);
         btDelete.setOnClickListener(this);
+        btShare.setOnClickListener(this);
 
     }
 
@@ -50,7 +55,20 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
             case R.id.bt_delete_btn:
                 presenter.onDeleteButtonClick();
                 break;
+            case R.id.bt_share_btn:
+                presenter.onShareButtonClick();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+//        Toast.makeText(this, "back presed", Toast.LENGTH_SHORT).show();
+        presenter.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     public void setTaskTitle(String title){
@@ -75,5 +93,14 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
 
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean getDoneStatus() {
+        return cbDoneStatus.isChecked();
+    }
+
+    public void setErrorOnTitle(String s) {
+        etTitle.setError(s);
+        etTitle.requestFocus();
     }
 }

@@ -8,7 +8,7 @@ class Task {
     int id;
     private String title;
     private String body;
-    private boolean completionStatus;
+    private boolean done;
     private Date date;
 
     public Task(int id, String title, String body){
@@ -56,12 +56,12 @@ class Task {
         this.body = body;
     }
 
-    public boolean isCompletionStatus() {
-        return completionStatus;
+    public boolean isDone() {
+        return done;
     }
 
-    public void setCompletionStatus(boolean completionStatus) {
-        this.completionStatus = completionStatus;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 
     public Date getDate() {

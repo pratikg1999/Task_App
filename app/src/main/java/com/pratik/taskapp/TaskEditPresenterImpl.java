@@ -45,7 +45,7 @@ class TaskEditPresenterImpl implements TaskEditPresenter{
     @Override
     public void onDeleteButtonClick() {
         AlertDialog.Builder builder = new AlertDialog.Builder(taskEditActivity.getContext());
-        AlertDialog dialog = builder.setTitle("Are you sure")
+        AlertDialog dialog = builder.setTitle("Do you want to delete?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -65,15 +65,79 @@ class TaskEditPresenterImpl implements TaskEditPresenter{
         dialog.show();
     }
 
+    private boolean validate(){
+        String curTitle = taskEditActivity.getTaskTitle();
+        if(curTitle== null || curTitle.trim().equals("")){
+            taskEditActivity.setErrorOnTitle("Can't be empty");
+            return  false;
+        }
+        return true;
+    }
+
+    private void save(){
+        if(validate()) {
+            if (forNewTask) {
+                task = interactor.createNewTask(taskEditActivity.getTaskTitle(), taskEditActivity.getTaskBody());
+                forNewTask = false;
+            } else {
+                task = interactor.editTask(task, taskEditActivity.getTaskTitle(), taskEditActivity.getTaskBody(), taskEditActivity.getDoneStatus());
+            }
+            taskEditActivity.showToast("Task saved successfully");
+        }
+    }
+
+    @Override
+    public void onShareButtonClick() {
+        String toShare = "Title:\n"+taskEditActivity.getTaskTitle()+"\n\nBody:\n" + taskEditActivity.getTaskBody() + "\n\nCompletion status:\n" + (taskEditActivity.getDoneStatus() ? "Done" :"Not done");
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, toShare);
+        sendIntent.setType("text/plain");
+        taskEditActivity.startActivity(sendIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(forNewTask && taskEditActivity.getTaskTitle().trim().equals("") && taskEditActivity.getTaskBody().trim().equals("")){
+            taskEditActivity.finish();
+            return;
+        }
+        if(forNewTask || !task.getBody().equals(taskEditActivity.getTaskBody()) || !task.getTitle().equals(taskEditActivity.getTaskTitle()) || (task.isDone()!=taskEditActivity.getDoneStatus()) ) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(taskEditActivity.getContext());
+            AlertDialog dialog = builder.setTitle("Do you want to save?")
+                    .setMessage("Task not saved! ")
+                    .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if(validate()) {
+                                save();
+                                taskEditActivity.finish();
+                            }
+                        }
+                    })
+                    .setNegativeButton("Discard", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            taskEditActivity.finish();
+                        }
+                    })
+                    .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setCancelable(true).create();
+            dialog.show();
+        }
+        else{
+            taskEditActivity.finish();
+        }
+    }
+
     @Override
     public void onSaveButtonClick() {
-        if(forNewTask){
-            task = interactor.createNewTask(taskEditActivity.getTaskTitle(), taskEditActivity.getTaskBody());
-            forNewTask = false;
-        }else{
-            task = interactor.editTask(task, taskEditActivity.getTaskTitle(), taskEditActivity.getTaskBody());
-        }
-        taskEditActivity.showToast("Task saved successfully");
+       save();
     }
 
 }
