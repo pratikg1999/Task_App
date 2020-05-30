@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements TasksView{
             }else{
                 holder.llTitleHeader.setBackgroundColor(Color.parseColor("#ef233c"));
             }
-            String strTimeFormat = "hh:mm:ss a";
+            String strTimeFormat = "hh:mm a";
             DateFormat timeFormat = new SimpleDateFormat(strTimeFormat);
             String time= timeFormat.format(curTask.getDate());
             holder.tvTime.setText(time);

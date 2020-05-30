@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity">
+<!--    android:background="@drawable/ic_sun_tornado_bg"-->
 
 <!--    <TextView-->
 <!--        android:layout_gravity="center"-->
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:backgroundTint="@android:color/holo_red_dark"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:src="@drawable/ic_add_white_24dp"
         android:contentDescription="Add task"
         android:layout_margin="16dp" />

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="16dp"
-    app:cardCornerRadius="8sp"
+    app:cardCornerRadius="4sp"
     android:layout_margin="10dp"
     app:cardElevation="12dp"
     >
@@ -18,7 +18,7 @@
             android:id="@+id/ll_title_header"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:padding="3dp"
+            android:padding="15dp"
             android:background="#abcdff"
             android:layout_height="wrap_content">
 
@@ -27,10 +27,13 @@
             android:layout_width="0dp"
             android:hint="Title of the task"
             android:layout_weight="9"
+            android:textSize="25sp"
             android:textStyle="bold"
+            android:textColor="#FFF"
             android:layout_height="wrap_content"/>
             <CheckBox
                 android:gravity="center"
+                android:layout_gravity="center|center_vertical"
                 android:id="@+id/cb_done_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,29 +45,43 @@
             android:id="@+id/tv_card_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxHeight="20dp"
+            android:maxHeight="100dp"
+            android:paddingVertical="10dp"
+            android:textSize="20sp"
             android:textStyle="italic"
-            android:paddingHorizontal="5dp"
+            android:paddingHorizontal="18dp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="5dp"
+            android:paddingHorizontal="18dp"
+            android:paddingBottom="15dp"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/tv_card_date"
                 android:text="date"
+                android:drawableLeft="@drawable/ic_cal_orange_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/tv_card_time"
                 android:layout_gravity="end"
-                android:textAlignment="textEnd"
+                android:drawableLeft="@drawable/ic_clock_orange_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical|end"
                 android:text="time"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
