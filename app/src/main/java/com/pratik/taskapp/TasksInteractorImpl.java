@@ -51,10 +51,10 @@ class TasksInteractorImpl implements TasksInteractor {
 
 
     @Override
-    public Task createNewTask(String title, String body) {
+    public Task createNewTask(String title, String body, boolean doneStatus) {
         Log.d(TAG, "creating new task");
-        Task newTask = new Task(curIdCounter, title, body);
-        taskList.add(newTask);
+        Task newTask = new Task(curIdCounter, title, body, doneStatus);
+        taskList.add(0, newTask);
         incrementCurId();
         saveTasksToSP(taskList);
         onTransactionFinishedListener.onFinished(taskList);

@@ -7,7 +7,7 @@ interface TasksInteractor {
         void onFinished(List<Task> tasks);
     }
 
-    Task createNewTask(String title, String body);
+    Task createNewTask(String title, String body, boolean doneStatus);
 
     boolean deleteTaskAt(int index); // TODO create task not found exception and add throws here
     boolean deleteTask(Task taskToDelete);

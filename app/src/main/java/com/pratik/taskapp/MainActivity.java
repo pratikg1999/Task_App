@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +30,11 @@ public class MainActivity extends AppCompatActivity implements TasksView{
     TasksRViewAdapter rViewAdapter;
     FloatingActionButton fab;
     RecyclerView rView;
+    TextView tvNoTaskCards;
     public static final String EDIT_TASK_KEY = "EDIT_TASK_KEY";
-//    private Gson gson = new Gson();
+    Typeface typeface;
+
+    //    private Gson gson = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements TasksView{
         Constants.global_tasks_presenter = new TasksPresenterImpl(this, Constants.global_interactor);
         rView = findViewById(R.id.rview);
         fab = findViewById(R.id.fab);
+        tvNoTaskCards = findViewById(R.id.tv_no_task_cards);
         tasksPresenter = Constants.global_tasks_presenter;
+        typeface = Typeface.createFromAsset(getAssets(), "Roboto-Regular.ttf");
         rView.setLayoutManager(new LinearLayoutManager(this));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,10 +70,21 @@ public class MainActivity extends AppCompatActivity implements TasksView{
     public void showEditScreen(Task task) {
         if(task==null){
             startActivity(new Intent(this, TaskEditActivity.class));
+            //, ActivityOptions.makeSceneTransitionAnimation(this).toBundle()
         }
         else {
             startActivity(new Intent(this, TaskEditActivity.class).putExtra(EDIT_TASK_KEY, task.getId()));
         }
+    }
+
+    public void enableRV() {
+        tvNoTaskCards.setVisibility(View.GONE);
+        rView.setVisibility(View.VISIBLE);
+    }
+
+    public void disableRV() {
+        rView.setVisibility(View.GONE);
+        tvNoTaskCards.setVisibility(View.VISIBLE);
     }
 
 
@@ -98,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements TasksView{
         public void onBindViewHolder(@NonNull TasksViewHolder holder, final int position) {
             Task curTask = tasks.get(position);
             holder.tvTitle.setText(curTask.getTitle());
+            holder.tvTitle.setTypeface(typeface);
             holder.tvBody.setText(curTask.getBody());
             holder.cbStatus.setChecked(curTask.isDone());
             if(curTask.isDone()) {

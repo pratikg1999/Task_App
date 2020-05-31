@@ -16,12 +16,25 @@ class TasksPresenterImpl implements TasksPresenter, TasksInteractor.OnTransactio
 
     @Override
     public void onFinished(List<Task> tasksList) {
-        mainActivity.setTasksToDisplay(tasksList);
+        if(tasksList!=null && tasksList.size()>0){
+            mainActivity.enableRV();
+            mainActivity.setTasksToDisplay(tasksList);
+        }else{
+            mainActivity.disableRV();
+
+        }
     }
 
     @Override
     public void initialize() {
-        mainActivity.setTasksToDisplay(interactor.getTasksList());
+        List<Task> tasks = interactor.getTasksList();
+        if(tasks!=null && tasks.size()>0){
+            mainActivity.enableRV();
+        mainActivity.setTasksToDisplay(tasks);
+        }
+        else {
+            mainActivity.disableRV();
+        }
     }
 
     @Override

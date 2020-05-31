@@ -9,18 +9,23 @@
     tools:context=".MainActivity">
 <!--    android:background="@drawable/ic_sun_tornado_bg"-->
 
-<!--    <TextView-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hello World!" />-->
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_no_task_cards"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="#909090"
+        android:text="Click on + button to start creating tasks" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:id="@+id/rview"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:hint="Title of the task"
             android:layout_weight="9"
-            android:textSize="25sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             android:textColor="#FFF"
             android:layout_height="wrap_content"/>
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:maxHeight="100dp"
             android:paddingVertical="10dp"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="italic"
             android:paddingHorizontal="18dp"
             />

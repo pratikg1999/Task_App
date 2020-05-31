@@ -16,12 +16,24 @@ class Task {
         this.title = title;
         this.body = body;
         this.date = new Date();
+        this.done = false;
     }
 
 
     public Task(int id, String title){
         this.id = id;
         this.title = title;
+        this.date = new Date();
+        this.body = "";
+        this.done = false;
+    }
+
+    public Task(int id, String title, String body, boolean doneStatus) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = new Date();
+        this.done = doneStatus;
     }
 
     @Override

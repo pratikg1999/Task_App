@@ -1,11 +1,14 @@
 package com.pratik.taskapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.transition.Slide;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -29,7 +32,12 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//        getWindow().setExitTransition(new Slide(Gravity.LEFT));
+//        getWindow().setEnterTransition(new Slide(Gravity.RIGHT));
         setContentView(R.layout.activity_task_edit);
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+
 
         etTitle = findViewById(R.id.et_title);
         etBody = findViewById(R.id.et_body);
@@ -44,6 +52,12 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         btDelete.setOnClickListener(this);
         btShare.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
     }
 
     @Override
@@ -91,8 +105,8 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         return this;
     }
 
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void showToast(String message, int duration) {
+        Toast.makeText(this, message, duration).show();
     }
 
     public boolean getDoneStatus() {
@@ -103,4 +117,9 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         etTitle.setError(s);
         etTitle.requestFocus();
     }
+
+    public void setDoneStatus(boolean doneStatus) {
+        cbDoneStatus.setChecked(doneStatus);
+    }
+
 }
