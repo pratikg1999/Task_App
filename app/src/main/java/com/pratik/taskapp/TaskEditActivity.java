@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -58,6 +59,12 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        try {
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            // Keyboard already hidden
+        }
         switch (v.getId()){
             case R.id.bt_save_btn:
                 presenter.onSaveButtonClick();
