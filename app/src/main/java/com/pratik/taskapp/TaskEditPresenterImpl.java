@@ -9,7 +9,6 @@ class TaskEditPresenterImpl implements TaskEditPresenter {
     TasksInteractor interactor;
     TaskEditActivity taskEditActivity;
     private boolean forNewTask = false;
-    //    private Gson gson = new Gson();
     Task task;
 
 

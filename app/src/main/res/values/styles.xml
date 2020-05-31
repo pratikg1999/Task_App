@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
         <item name="android:windowActivityTransitions">true</item>
 
 <!--        <item name="android:windowEnterTransition">@transition/explode</item>-->
@@ -11,6 +11,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+<!--        <item name="android:textColorHint">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorAccent">@android:color/holo_red_dark</item>-->
+<!--        <item name="colorControlNormal">@android:color/holo_red_dark</item>-->
+<!--        <item name="colorControlActivated">@color/colorAccent</item>-->
+        <item name="boxStrokeColor">@android:color/black</item>
+
     </style>
 
 </resources>

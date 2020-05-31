@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements TasksView{
     public static final String EDIT_TASK_KEY = "EDIT_TASK_KEY";
     Typeface typeface;
 
-    //    private Gson gson = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

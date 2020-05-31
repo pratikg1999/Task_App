@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -27,6 +28,7 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
     ImageButton btDelete;
     CheckBox cbDoneStatus;
     ImageButton btShare;
+    TextInputLayout tilTitleLayout;
     private TaskEditPresenter presenter;
 
     @Override
@@ -38,7 +40,7 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_task_edit);
         overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
 
-
+        tilTitleLayout = findViewById(R.id.til_title_layout);
         etTitle = findViewById(R.id.et_title);
         etBody = findViewById(R.id.et_body);
         btSave = findViewById(R.id.bt_save_btn);
@@ -76,7 +78,7 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
-//        Toast.makeText(this, "back presed", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "back pressed", Toast.LENGTH_SHORT).show();
         presenter.onBackPressed();
     }
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:context=".TaskEditActivity">
 
@@ -18,38 +19,62 @@
             android:layout_weight="9"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_title"
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:paddingHorizontal="7dp"-->
+<!--                android:text="Title:"-->
+<!--                android:textSize="20sp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_title_layout"
+                style="@style/TextInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:maxLines="1"
-                android:padding="20sp"
-                android:textSize="20sp"
-                android:maxLength="50"
-                android:layout_margin="15dp"
-                android:background="@drawable/edit_text_bg"
-                android:inputType="text"
-                android:hint="Enter the title" />
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:hint="Title">
 
+                <EditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:padding="20sp"
+                    android:textSize="20sp" />
+                <!--                android:background="@drawable/edit_text_bg"-->
+                <!--                android:hint="Enter the title"-->
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:hint="Body">
             <EditText
                 android:id="@+id/et_body"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:padding="20sp"
-                android:textSize="20sp"
-                android:layout_margin="15dp"
-                android:background="@drawable/edit_text_bg"
+                android:layout_height="match_parent"
                 android:gravity="top"
-                android:inputType="text"
-                android:hint="Enter the body" />
+                android:padding="20sp"
+                android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
-                android:layout_marginHorizontal="15dp"
                 android:id="@+id/cb_edit_done_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
                 android:text="Set completion status" />
 
         </LinearLayout>
@@ -67,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1"
-                tools:ignore="NestedWeights"></Space>
+                tools:ignore="NestedWeights" />
 
             <ImageButton
                 android:id="@+id/bt_save_btn"
@@ -81,7 +106,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></Space>
+                android:layout_weight="1" />
 
 
             <ImageButton
@@ -96,7 +121,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></Space>
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/bt_delete_btn"
@@ -110,7 +135,7 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></Space>
+                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
