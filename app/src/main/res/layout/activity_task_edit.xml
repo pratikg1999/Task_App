@@ -60,7 +60,8 @@
                 android:layout_weight="1"
                 android:layout_margin="15dp"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:hint="Body">
+                android:hint="Body"
+                tools:ignore="NestedWeights">
             <EditText
                 android:id="@+id/et_body"
                 android:layout_width="match_parent"
@@ -101,7 +102,8 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:gravity="center_horizontal|center_vertical"
-                android:src="@drawable/ic_save_black_24dp" />
+                android:src="@drawable/ic_save_black_24dp"
+                android:contentDescription="Save" />
 
             <Space
                 android:layout_width="0dp"
@@ -116,7 +118,8 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:gravity="center_horizontal|center_vertical"
-                android:src="@drawable/ic_share_black_24dp" />
+                android:src="@drawable/ic_share_black_24dp"
+                android:contentDescription="Share" />
 
             <Space
                 android:layout_width="0dp"
@@ -130,7 +133,8 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:gravity="center_horizontal|center_vertical"
-                android:src="@drawable/ic_delete_black_24dp" />
+                android:src="@drawable/ic_delete_black_24dp"
+                android:contentDescription="Delete" />
 
             <Space
                 android:layout_width="0dp"

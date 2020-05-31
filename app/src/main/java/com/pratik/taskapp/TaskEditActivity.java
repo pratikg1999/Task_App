@@ -1,34 +1,28 @@
 package com.pratik.taskapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.transition.Slide;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 
 public class TaskEditActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText etTitle;
-    EditText etBody;
-    ImageButton btSave;
-    ImageButton btDelete;
-    CheckBox cbDoneStatus;
-    ImageButton btShare;
-    TextInputLayout tilTitleLayout;
+    private EditText etTitle;
+    private EditText etBody;
+    private ImageButton btSave;
+    private ImageButton btDelete;
+    private CheckBox cbDoneStatus;
+    private ImageButton btShare;
+    private TextInputLayout tilTitleLayout;
     private TaskEditPresenter presenter;
 
     @Override
@@ -82,10 +76,6 @@ public class TaskEditActivity extends AppCompatActivity implements View.OnClickL
         presenter.onBackPressed();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 
     public void setTaskTitle(String title){
         etTitle.setText(title);

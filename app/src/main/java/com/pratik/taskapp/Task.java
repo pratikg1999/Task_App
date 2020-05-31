@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.Date;
 
 class Task {
-    int id;
+    private int id;
     private String title;
     private String body;
     private boolean done;
@@ -38,10 +38,7 @@ class Task {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        if((obj instanceof Task && this.id == ((Task)obj).id)){
-            return true;
-        }
-        return false;
+        return (obj instanceof Task && this.id == ((Task) obj).id);
     }
 
     public int getId() {

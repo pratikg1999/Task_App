@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,13 +25,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TasksView{
 
-    TasksPresenter tasksPresenter;
-    TasksRViewAdapter rViewAdapter;
-    FloatingActionButton fab;
-    RecyclerView rView;
-    TextView tvNoTaskCards;
+    private TasksPresenter tasksPresenter;
+    private TasksRViewAdapter rViewAdapter;
+    private FloatingActionButton fab;
+    private RecyclerView rView;
+    private TextView tvNoTaskCards;
     public static final String EDIT_TASK_KEY = "EDIT_TASK_KEY";
-    Typeface typeface;
+    private Typeface typeface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,14 +90,14 @@ public class MainActivity extends AppCompatActivity implements TasksView{
         private  List<Task> tasks;
         private Context ctx;
 
-        public void setTasks(List<Task> tasks){
+        void setTasks(List<Task> tasks){
             if(this.tasks!=tasks) {
                 this.tasks = tasks;
             }
             this.notifyDataSetChanged();
         }
 
-        public TasksRViewAdapter(Context ctx, List<Task> tasks) {
+        TasksRViewAdapter(Context ctx, List<Task> tasks) {
             this.ctx = ctx;
             this.tasks = tasks;
         }

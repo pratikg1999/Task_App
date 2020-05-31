@@ -20,7 +20,7 @@ class TasksInteractorImpl implements TasksInteractor {
     private static final String CUR_ID_KEY = "CUR_ID_KEY";
     private static final String TASKS_KEY = "TASKS_KEY";
 
-    public static String TAG = "Inside interactor";
+    private static String TAG = "Inside interactor";
 
     private List<Task> readTasksFromSP(){
         String jsonTasks = preferences.getString(TASKS_KEY, null);
@@ -39,7 +39,7 @@ class TasksInteractorImpl implements TasksInteractor {
 
     public  TasksInteractorImpl(Context context){
 //        this.onTransactionFinishedListener = listener;
-        preferences = context.getSharedPreferences(SP_NAME, context.MODE_PRIVATE);
+        preferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         curIdCounter = preferences.getInt(CUR_ID_KEY, 0);
         taskList = readTasksFromSP();
 //        for(int i =0; i<3; i++){

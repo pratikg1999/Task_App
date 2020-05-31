@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.widget.Toast;
 
 class TaskEditPresenterImpl implements TaskEditPresenter {
-    TasksInteractor interactor;
-    TaskEditActivity taskEditActivity;
+    private TasksInteractor interactor;
+    private TaskEditActivity taskEditActivity;
     private boolean forNewTask = false;
-    Task task;
+    private Task task;
 
 
     TaskEditPresenterImpl(TaskEditActivity activity, TasksInteractor interactor) {

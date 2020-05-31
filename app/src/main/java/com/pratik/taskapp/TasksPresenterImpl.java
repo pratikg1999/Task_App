@@ -1,12 +1,11 @@
 package com.pratik.taskapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 class TasksPresenterImpl implements TasksPresenter, TasksInteractor.OnTransactionFinishedListener {
-    MainActivity mainActivity;
-    TasksInteractor interactor;
+    private MainActivity mainActivity;
+    private TasksInteractor interactor;
 
     public TasksPresenterImpl(MainActivity activity, TasksInteractor interactor){
         this.mainActivity = activity;

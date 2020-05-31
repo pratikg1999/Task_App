@@ -61,7 +61,7 @@
             <TextView
                 android:id="@+id/tv_card_date"
                 android:text="date"
-                android:drawableLeft="@drawable/ic_cal_orange_24dp"
+                android:drawableStart="@drawable/ic_cal_orange_24dp"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
                 android:layout_width="0dp"
@@ -76,7 +76,7 @@
             <TextView
                 android:id="@+id/tv_card_time"
                 android:layout_gravity="end"
-                android:drawableLeft="@drawable/ic_clock_orange_24dp"
+                android:drawableStart="@drawable/ic_clock_orange_24dp"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical|end"
                 android:text="time"
